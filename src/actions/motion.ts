@@ -562,8 +562,7 @@ class MoveRight extends BaseMovement {
 
   public async execAction(position: Position, vimState: VimState): Promise<Position> {
     if (shouldWrapKey(vimState, this.keysPressed)) {
-      const includeEol = vimState.currentMode === ModeName.Insert;
-      return position.getRightThroughLineBreaks(includeEol);
+      return position.getRightThroughLineBreaks(true);
     }
     return position.getRight();
   }
