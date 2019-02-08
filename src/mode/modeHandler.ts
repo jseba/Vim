@@ -617,12 +617,13 @@ export class ModeHandler implements vscode.Disposable {
         if (vimState.currentMode === ModeName.Normal) {
           const currentLineLength = TextEditor.getLineAt(range.stop).text.length;
           if (currentLineLength > 0) {
+            const onemore = configuration.onemore;
             const lineEndPosition = range.start.getLineEnd().getLeftThroughLineBreaks(true);
-            if (range.start.character >= currentLineLength) {
+            if (range.start.character >= currentLineLength && !onemore) {
               range = range.withNewStart(lineEndPosition);
             }
 
-            if (range.stop.character >= currentLineLength) {
+            if (range.stop.character >= currentLineLength && !onemore) {
               range = range.withNewStop(lineEndPosition);
             }
           }

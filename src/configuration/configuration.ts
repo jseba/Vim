@@ -282,6 +282,9 @@ class Configuration implements IConfiguration {
   whichwrap = '';
   wrapKeys = {};
 
+  // TODO: use the Vim setting `virtualedit' to set this
+  onemore = false;
+
   report = 2;
 
   cursorStylePerMode: IModeSpecificStrings<string> = {
